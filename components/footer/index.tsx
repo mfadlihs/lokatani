@@ -9,6 +9,7 @@ export default function Footer() {
 				width={200}
 				height={150}
 				alt='logo'
+				className='m-auto block'
 			/>
 		</div>
 	);
