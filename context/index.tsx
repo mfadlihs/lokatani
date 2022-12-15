@@ -15,12 +15,10 @@ export default function ContextWrapper({ children }: { children: ReactNode }) {
 
 	useEffect(() => {
 		setToken(getToken());
-		// setToken(gettoken)
-		// setToken(localStorage.getItem(''))
 	}, []);
 
 	useEffect(() => {
-		token && setGlobalToken(token);
+		setGlobalToken(token as string);
 	}, [token]);
 
 	const DEFAULT_VALUE = {

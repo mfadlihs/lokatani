@@ -6,16 +6,25 @@ import useContainerDimensions from "@/hooks/useContainerDimension";
 import logo from "@/public/assets/images/logo.svg";
 import { AppContext } from "@/context";
 import { getToken } from "@/utils/token";
+import { useRouter } from "next/router";
 
 export default function Navbar() {
+	const router = useRouter();
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [isUser, setIsUser] = useState(false);
+	const {
+		token: { token },
+	} = useContext(AppContext);
 
 	const { height } = useContainerDimensions<HTMLDivElement>(containerRef);
 
 	useEffect(() => {
-		getToken() ? setIsUser(true) : setIsUser(false);
+		token ? setIsUser(true) : setIsUser(false);
 	}, []);
+
+	const handleClick = () => {
+		token && router.push("/register");
+	};
 
 	return (
 		<>
@@ -31,9 +40,9 @@ export default function Navbar() {
 					<Button
 						className={`${isUser ? "bg-red-700" : "bg-secondary-1"}`}
 						color='secondary'
-						variant='contained'>
+						variant='contained'
+						onClick={handleClick}>
 						{isUser ? "LOG OUT" : "REGISTER"}
-						{/* REGISTRASI */}
 					</Button>
 				</div>
 			</Container>

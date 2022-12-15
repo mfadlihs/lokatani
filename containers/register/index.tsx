@@ -22,6 +22,7 @@ import update from "immutability-helper";
 import { RestApi } from "@/utils/api";
 import { getToken } from "@/utils/token";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 export default function RegisterContainer() {
 	const router = useRouter();
