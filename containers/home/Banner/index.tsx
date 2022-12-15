@@ -1,12 +1,14 @@
 import { Button } from "@mui/material";
 import Image from "next/image";
 import { TagCard } from "./style";
+import banner from "@/public/assets/images/home-banner.png";
+import checklist from "@/public/assets/icons/checklist.svg";
 
 export default function Banner() {
 	return (
 		<div className='relative mt-16 h-screen '>
 			<Image
-				src={"/assets/images/home-banner.png"}
+				src={banner}
 				alt='banner'
 				width={670}
 				height={560}
@@ -31,30 +33,15 @@ export default function Banner() {
 				</div>
 				<div>
 					<TagCard>
-						<Image
-							src={"/assets/icons/checklist.svg"}
-							width={20}
-							height={20}
-							alt='checklist'
-						/>
+						<Image src={checklist} width={20} height={20} alt='checklist' />
 						Baca Artikel Seputar Pertanian
 					</TagCard>
 					<TagCard className='mt-6 ml-10'>
-						<Image
-							src={"/assets/icons/checklist.svg"}
-							width={20}
-							height={20}
-							alt='checklist'
-						/>
+						<Image src={checklist} width={20} height={20} alt='checklist' />
 						Belanja Kebutuhan Pangan
 					</TagCard>
 					<TagCard className='mt-6'>
-						<Image
-							src={"/assets/icons/checklist.svg"}
-							width={20}
-							height={20}
-							alt='checklist'
-						/>
+						<Image src={checklist} width={20} height={20} alt='checklist' />
 						Jual Bahan Pangan
 					</TagCard>
 				</div>
