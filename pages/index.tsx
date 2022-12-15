@@ -2,6 +2,7 @@ import Loading from "@/components/loading";
 import Navbar from "@/components/navbar";
 import HomeContainer from "@/containers/home";
 import dynamic from "next/dynamic";
+import Head from "next/head";
 import React from "react";
 
 const HomeRoutes = dynamic(() => import("@/containers/home"), {
@@ -9,5 +10,12 @@ const HomeRoutes = dynamic(() => import("@/containers/home"), {
 });
 
 export default function Home() {
-	return <HomeRoutes />;
+	return (
+		<>
+			<Head>
+				<title>Lokatani</title>
+			</Head>
+			<HomeRoutes />
+		</>
+	);
 }

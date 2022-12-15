@@ -3,6 +3,10 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../utils/themeProvider";
 import ContextWrapper from "@/context";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 export default function App({ Component, pageProps }: AppProps) {
 	return (
