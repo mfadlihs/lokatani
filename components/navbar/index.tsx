@@ -20,7 +20,7 @@ export default function Navbar() {
 
 	useEffect(() => {
 		token ? setIsUser(true) : setIsUser(false);
-	}, []);
+	}, [token]);
 
 	const handleClick = () => {
 		token && router.push("/register");

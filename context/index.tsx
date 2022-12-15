@@ -18,6 +18,7 @@ export default function ContextWrapper({ children }: { children: ReactNode }) {
 	}, []);
 
 	useEffect(() => {
+		if (token === "") return;
 		setGlobalToken(token as string);
 	}, [token]);
 
