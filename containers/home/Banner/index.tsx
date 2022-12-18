@@ -3,6 +3,7 @@ import Image from "next/image";
 import { TagCard } from "./style";
 import banner from "@/public/assets/images/home-banner.png";
 import checklist from "@/public/assets/icons/checklist.svg";
+import Link from "next/link";
 
 export default function Banner() {
 	return (
@@ -27,9 +28,11 @@ export default function Banner() {
 						<br />
 						pangan ke seluruh Indonesia!
 					</div>
-					<Button color='secondary' variant='contained'>
-						Jelajahi Lokatani
-					</Button>
+					<Link href={"/pasar"}>
+						<Button color='secondary' variant='contained'>
+							Jelajahi Lokatani
+						</Button>
+					</Link>
 				</div>
 				<div>
 					<TagCard>

@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { Card } from "./style";
 
@@ -18,13 +19,15 @@ export default function Article() {
 				<div className='mt-4 h5 font-normal text-center text-text-secondary'>
 					Belanja kebutuhan dan jual bahan panganmu di lokatani
 				</div>
-				<Button
-					variant='contained'
-					fullWidth
-					color='secondary'
-					className='font-bold py-5 text-base mt-16'>
-					KUNJUNGI PASAR
-				</Button>
+				<Link href='/pasar'>
+					<Button
+						variant='contained'
+						fullWidth
+						color='secondary'
+						className='font-bold py-5 text-base mt-16'>
+						KUNJUNGI PASAR
+					</Button>
+				</Link>
 			</Card>
 			<Card>
 				<Image

@@ -22,7 +22,9 @@ export default function Deskripsi({ data }: { data: Product }) {
 			</div>
 			<div className='w-full h-[1.5px] mb-5 bg-gray-300'></div>
 			<div className='h4 mb-2'>Deskripsi</div>
-			<div className='body1 text-grey-60 mb-5'>{data.deskripsi}</div>
+			<div className='body1 text-grey-60 mb-5 whitespace-pre'>
+				{data.deskripsi}
+			</div>
 			<div className='w-full h-[1.5px] bg-gray-300'></div>
 		</div>
 	);

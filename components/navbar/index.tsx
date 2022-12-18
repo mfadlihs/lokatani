@@ -7,6 +7,7 @@ import logo from "@/public/assets/images/logo.svg";
 import { AppContext } from "@/context";
 import { getToken, setGlobalToken } from "@/utils/token";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 export default function Navbar() {
 	const router = useRouter();
@@ -14,6 +15,7 @@ export default function Navbar() {
 	const [isUser, setIsUser] = useState(false);
 	const {
 		token: { token, setToken },
+		user: { user },
 	} = useContext(AppContext);
 
 	const { height } = useContainerDimensions<HTMLDivElement>(containerRef);
@@ -34,11 +36,15 @@ export default function Navbar() {
 	return (
 		<>
 			<Container ref={containerRef}>
-				<Image width={180} height={80} src={logo} alt='logo' />
-				<div className='flex gap-16'>
-					<Button variant='outlined' color='secondary' className='text-white'>
-						Pasar
-					</Button>
+				<Link href={"/"}>
+					<Image width={180} height={80} src={logo} alt='logo' />
+				</Link>
+				<div className='flex gap-12 items-center'>
+					<Link href={"/pasar"}>
+						<Button variant='outlined' color='secondary' className='text-white'>
+							Pasar
+						</Button>
+					</Link>
 					<Button variant='outlined' color='secondary' className='text-white'>
 						Artikel
 					</Button>
@@ -49,6 +55,7 @@ export default function Navbar() {
 						onClick={handleClick}>
 						{isUser ? "LOG OUT" : "REGISTER"}
 					</Button>
+					{user && <div className='text-white h5'>{user.nickname}</div>}
 				</div>
 			</Container>
 			<BackDrop height={height} />
