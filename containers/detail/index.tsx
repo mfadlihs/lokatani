@@ -6,6 +6,10 @@ import { RestApi } from "@/utils/api";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Deskripsi from "./deskripsi";
+import Edit from "./Edit";
+import Image from "./Image";
+import RootProduct from "./Root";
 
 export default function DetailContainer() {
 	const router = useRouter();
@@ -37,7 +41,14 @@ export default function DetailContainer() {
 			</Head>
 			<div className=''>
 				<Navbar />
-				<div className='px-16 py-16'></div>
+				<div className='px-16 py-16'>
+					<RootProduct />
+					<div className='w-full flex gap-8'>
+						<Image />
+						<Deskripsi data={data} />
+						<Edit />
+					</div>
+				</div>
 				<Footer />
 			</div>
 		</>
