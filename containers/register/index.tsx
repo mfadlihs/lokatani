@@ -164,7 +164,7 @@ export default function RegisterContainer() {
 					<div className='mt-16 flex justify-between items-center'>
 						<div className='flex h4 gap-2'>
 							<div className='font-normal text-grey-60'>Sudah punya akun?</div>
-							<Link href={"/register"}>
+							<Link href={"/login"}>
 								<div className='text-primary-font'>Masuk</div>
 							</Link>
 						</div>

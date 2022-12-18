@@ -8,8 +8,10 @@ import { TextField } from "./style";
 import Link from "next/link";
 import { ErrorLogin } from "./type";
 import { AppContext } from "@/context";
+import { useRouter } from "next/router";
 
 export default function LoginContainer() {
+	const router = useRouter();
 	const {
 		token: { setToken },
 	} = useContext(AppContext);
@@ -23,6 +25,7 @@ export default function LoginContainer() {
 		RestApi.post("/user/login", userForm)
 			.then(e => {
 				setToken(e.data.token);
+				router.push("/");
 			})
 			.catch((e: AxiosError) => {
 				const response = e.response?.data as ErrorLogin;

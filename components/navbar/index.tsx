@@ -5,7 +5,7 @@ import { BackDrop, Container } from "./style";
 import useContainerDimensions from "@/hooks/useContainerDimension";
 import logo from "@/public/assets/images/logo.svg";
 import { AppContext } from "@/context";
-import { getToken } from "@/utils/token";
+import { getToken, setGlobalToken } from "@/utils/token";
 import { useRouter } from "next/router";
 
 export default function Navbar() {
@@ -13,7 +13,7 @@ export default function Navbar() {
 	const containerRef = useRef<HTMLDivElement>(null);
 	const [isUser, setIsUser] = useState(false);
 	const {
-		token: { token },
+		token: { token, setToken },
 	} = useContext(AppContext);
 
 	const { height } = useContainerDimensions<HTMLDivElement>(containerRef);
@@ -23,7 +23,12 @@ export default function Navbar() {
 	}, [token]);
 
 	const handleClick = () => {
-		token && router.push("/register");
+		if (!token) {
+			router.push("/register");
+			return;
+		}
+		setToken("");
+		setGlobalToken("");
 	};
 
 	return (
