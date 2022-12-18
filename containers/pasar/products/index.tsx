@@ -1,9 +1,24 @@
+import Loading from "@/components/loading";
 import ProductCard from "@/components/productCard";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { CircularProgress } from "@mui/material";
+import { Product } from "@/services/types";
+import { RestApi } from "@/utils/api";
+import LoadingIndicator from "@/components/LoadingIndicator";
 
 export default function Products() {
+	const [products, setProducts] = useState<Product[]>([]);
+
+	useEffect(() => {
+		RestApi.get("/produk/productlist").then(e => setProducts(e.data));
+	}, []);
+
+	useEffect(() => {
+		console.log(products);
+	}, [products]);
+
 	return (
 		<div className='my-16'>
 			<div>
@@ -17,48 +32,34 @@ export default function Products() {
 						/>
 					</div>
 				</div>
-				<Swiper spaceBetween={50} slidesPerView={3}>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
+				<Swiper spaceBetween={10} slidesPerView={3.5}>
+					{products.length === 0 ? (
+						<LoadingIndicator />
+					) : (
+						products.map(e => {
+							return (
+								<SwiperSlide>
+									<ProductCard data={e} />
+								</SwiperSlide>
+							);
+						})
+					)}
 				</Swiper>
 			</div>
 			<div>
 				<div className='h3 mt-12 mb-8'>Produk Terlaris</div>
-				<Swiper spaceBetween={50} slidesPerView={3}>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
-					<SwiperSlide>
-						<ProductCard />
-					</SwiperSlide>
+				<Swiper spaceBetween={10} slidesPerView={3.5}>
+					{products.length === 0 ? (
+						<LoadingIndicator />
+					) : (
+						products.map(e => {
+							return (
+								<SwiperSlide>
+									<ProductCard data={e} />
+								</SwiperSlide>
+							);
+						})
+					)}
 				</Swiper>
 			</div>
 		</div>

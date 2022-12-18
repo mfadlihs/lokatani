@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Loading() {
 	return (
-		<div className='w-screen h-screen overflow-hidden bg-primary-2 flex justify-center flex-col items-center'>
+		<div className='w-full h-screen overflow-hidden bg-primary-2 flex justify-center flex-col items-center'>
 			<motion.img
 				src='/assets/images/logo.svg'
 				width={300}

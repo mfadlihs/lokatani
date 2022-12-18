@@ -1,8 +1,10 @@
+import { Product } from "@/services/types";
+import { rupiah } from "@/utils/currency";
 import Image from "next/image";
 import React from "react";
 import { Container, ImageCard } from "./style";
 
-export default function ProductCard() {
+export default function ProductCard({ data }: { data: Product }) {
 	return (
 		<Container className='body1 text-grey-60 m-auto'>
 			<ImageCard>
@@ -11,10 +13,11 @@ export default function ProductCard() {
 				</div>
 			</ImageCard>
 			<div className='pt-4 pb-2'>
-				<div className='h6 mb-2 text-black'>Stroberi Mangga Apel</div>
+				<div className='h6 mb-2 text-black'>{data.namaproduk}</div>
 				<div className='flex items-center'>
 					<div className='h4 text-black'>
-						Rp13.000<span className='body1 text-grey-60'>/250gr</span>
+						{rupiah(data.harga)}
+						<span className='body1 text-grey-60'>/250gr</span>
 					</div>
 				</div>
 				<div className='flex justify-between mt-3'>
